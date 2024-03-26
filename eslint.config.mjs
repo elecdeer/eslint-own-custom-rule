@@ -30,6 +30,11 @@ export default typescriptEslint.config(
   ...typescriptEslint.configs.recommendedTypeChecked,
   ...typescriptEslint.configs.stylisticTypeChecked,
   {
+    rules: {
+      "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    },
+  },
+  {
     files: ["**/*.ts", "**/*.tsx"],
     settings: {
       react: {
