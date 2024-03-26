@@ -5,9 +5,16 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import typescriptEslint from "typescript-eslint";
 
+import * as myRule from "./rules/index.mjs";
+
 export default typescriptEslint.config(
   {
-    ignores: ["dist", "eslint.config.mjs", "vite.config.ts"],
+    ignores: [
+      "dist",
+      "eslint.config.mjs",
+      "vite.config.ts",
+      "eslint-local-rules.cjs",
+    ],
   },
   eslint.configs.recommended,
   {
@@ -51,6 +58,22 @@ export default typescriptEslint.config(
         "warn",
         { allowConstantExport: true },
       ],
+    },
+  },
+  // {
+  //   plugins: {
+  //     "local-rules": localRules,
+  //   },
+  //   rules: {
+  //     "local-rules/no-omit-utility-type": "error",
+  //   },
+  // },
+  {
+    plugins: {
+      "local-rules": myRule,
+    },
+    rules: {
+      "local-rules/no-omit-utility-type": "error",
     },
   },
   prettierConfigPlugin,
