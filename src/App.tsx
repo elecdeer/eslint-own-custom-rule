@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/dot-notation */
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -25,7 +25,7 @@ function App() {
           count is {count}
         </button>
         <hr className={style["hr-line"]} />
-        <Divider />
+        <hr className={style["divider"]} />
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

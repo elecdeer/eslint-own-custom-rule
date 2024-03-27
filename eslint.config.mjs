@@ -5,17 +5,11 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import typescriptEslint from "typescript-eslint";
 
-// import * as myRule from "./rules/index.mjs";
-import * as myRule from "./rules/dist/index.cjs";
+import customPlugin from "./rules/dist/index.js";
 
 export default typescriptEslint.config(
   {
-    ignores: [
-      "dist",
-      "eslint.config.mjs",
-      "vite.config.ts",
-      "eslint-local-rules.cjs",
-    ],
+    ignores: ["dist", "eslint.config.mjs", "vite.config.ts"],
   },
   eslint.configs.recommended,
   {
@@ -61,20 +55,11 @@ export default typescriptEslint.config(
       ],
     },
   },
-  // {
-  //   plugins: {
-  //     "local-rules": localRules,
-  //   },
-  //   rules: {
-  //     "local-rules/no-omit-utility-type": "error",
-  //   },
-  // },
   {
     plugins: {
-      "local-rules": myRule,
+      "local-rules": customPlugin,
     },
     rules: {
-      "local-rules/no-omit-utility-type": "error",
       "local-rules/no-hr-element": "error",
     },
   },
