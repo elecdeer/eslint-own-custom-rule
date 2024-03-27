@@ -11,12 +11,16 @@ const createRule = ESLintUtils.RuleCreator((name) => {
 export const noHrElementRule = createRule({
   name: "no-hr-element",
   meta: {
-    type: "problem",
+    type: "suggestion",
+    hasSuggestions: true,
+    // fixable: "code",
     docs: {
       description: "Disallow the use of the `<hr>` element.",
     },
     messages: {
       noHrElement: "Do not use the `<hr>` element.",
+      replaceWithSolidDivider: "Replace with `<Divider type='solid' />`.",
+      replaceWithDashedDivider: "Replace with `<Divider type='dashed' />`.",
     },
     schema: [],
   },
@@ -32,6 +36,19 @@ export const noHrElementRule = createRule({
         context.report({
           node,
           messageId: "noHrElement",
+          // fix: (fixer) => fixer.replaceText(node, "<Divider />"),
+          suggest: [
+            {
+              messageId: "replaceWithSolidDivider",
+              fix: (fixer) =>
+                fixer.replaceText(node, "<Divider type='solid' />"),
+            },
+            {
+              messageId: "replaceWithDashedDivider",
+              fix: (fixer) =>
+                fixer.replaceText(node, "<Divider type='dashed' />"),
+            },
+          ],
         });
       },
     };
