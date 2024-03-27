@@ -3,6 +3,8 @@ import "./App.css";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
+import style from "./App.module.css";
+
 function App() {
   const [count, setCount] = useState(0);
 
@@ -21,10 +23,13 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <hr className={style["hr-line"]} />
+        <hr className={style["divider"]} />
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
+      <hr />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>

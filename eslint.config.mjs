@@ -5,7 +5,8 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import typescriptEslint from "typescript-eslint";
 
-import * as myRule from "./rules/index.mjs";
+// import * as myRule from "./rules/index.mjs";
+import * as myRule from "./rules/dist/index.cjs";
 
 export default typescriptEslint.config(
   {
@@ -74,6 +75,7 @@ export default typescriptEslint.config(
     },
     rules: {
       "local-rules/no-omit-utility-type": "error",
+      "local-rules/no-hr-element": "error",
     },
   },
   prettierConfigPlugin,
